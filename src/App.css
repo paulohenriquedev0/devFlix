@@ -1,0 +1,248 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #111;
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+button {
+  cursor: pointer;
+}
+
+.login-page {
+  width: 100%;
+  height: 100vh;
+  background: linear-gradient(to bottom, #00000099, #000000), 
+    url("https://images.unsplash.com/photo-1489599849927-2ee91cede3ba");
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-box {
+  width: 350px;
+  background-color: rgba(0, 0, 0, 0.85);
+  padding: 40px;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.login-box h1 {
+  color: #e50914;
+  font-size: 36px;
+}
+
+.login-box h2 {
+  font-size: 24px;
+}
+
+.login-box input {
+  padding: 14px;
+  border: none;
+  border-radius: 4px;
+  background-color: #333;
+  color: white;
+}
+
+.login-box button {
+  padding: 14px;
+  background-color: #e50914;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-weight: bold;
+}
+
+.login-help {
+  font-size: 13px;
+  color: #aaa;
+}
+
+.header {
+  width: 100%;
+  height: 70px;
+  padding: 0 40px;
+  background-color: #111;
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  position: fixed;
+  top: 0;
+  z-index: 10;
+}
+
+.header h1 {
+  color: #e50914;
+  font-size: 28px;
+}
+
+.header nav {
+  display: flex;
+  gap: 24px;
+}
+
+.header nav a {
+  color: white;
+  text-decoration: none;
+  font-size: 16px;
+}
+
+.header nav a:hover {
+  color: #bbb;
+}
+
+.featured {
+  height: 600px;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  padding: 0 40px;
+}
+
+.featured-content {
+  max-width: 500px;
+  margin-top: 70px;
+}
+
+.featured-content h2 {
+  font-size: 56px;
+  margin-bottom: 20px;
+}
+
+.featured-content p {
+  font-size: 18px;
+  color: #ddd;
+  margin-bottom: 24px;
+  line-height: 1.5;
+}
+
+.featured-buttons {
+  display: flex;
+  gap: 12px;
+}
+
+.featured-buttons button {
+  padding: 12px 24px;
+  border: none;
+  border-radius: 4px;
+  font-weight: bold;
+}
+
+.featured-buttons button:first-child {
+  background-color: white;
+  color: black;
+}
+
+.featured-buttons button:last-child {
+  background-color: rgba(100, 100, 100, 0.7);
+  color: white;
+}
+
+.content {
+  padding: 20px 40px 60px;
+}
+
+.movie-row {
+  margin-bottom: 36px;
+}
+
+.movie-row h2 {
+  margin-bottom: 16px;
+  font-size: 24px;
+}
+
+.movie-list {
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;
+  padding-bottom: 12px;
+}
+
+.movie-card {
+  min-width: 180px;
+  max-width: 180px;
+  transition: transform 0.2s;
+}
+
+.movie-card:hover {
+  transform: scale(1.05);
+}
+
+.movie-card img {
+  width: 100%;
+  height: 270px;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+.movie-card h3 {
+  margin-top: 8px;
+  font-size: 16px;
+}
+
+.movie-card span {
+  font-size: 13px;
+  color: #aaa;
+  text-transform: capitalize;
+}
+
+.details-page {
+  min-height: 100vh;
+  background-size: cover;
+  background-position: center;
+  padding: 140px 40px 40px;
+}
+
+.details-content {
+  max-width: 520px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.details-content h1 {
+  font-size: 52px;
+}
+
+.details-content p {
+  color: #ddd;
+  line-height: 1.5;
+  font-size: 18px;
+}
+
+.details-content span {
+  color: #ccc;
+}
+
+.details-buttons {
+  display: flex;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.details-buttons button {
+  padding: 12px 24px;
+  border: none;
+  border-radius: 4px;
+  font-weight: bold;
+}
+
+.details-buttons button:first-child {
+  background-color: #e50914;
+  color: white;
+}
+
+.details-buttons button:last-child {
+  background-color: #333;
+  color: white;
+}
