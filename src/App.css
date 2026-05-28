@@ -48,8 +48,8 @@ button {
 .login-box input {
   padding: 14px;
   border: none;
-  border-radius: 4px;
-  background-color: #333;
+  border-radius: 100px;
+  background-color: #474747;
   color: white;
 }
 

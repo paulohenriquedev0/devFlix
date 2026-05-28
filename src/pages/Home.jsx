@@ -6,8 +6,7 @@ import MovieRow from "../components/MovieRow";
 function Home() {
   const featuredMovie = movies.find((movie) => movie.featured === true);
 
-  const categories = ["Lançamentos", "Ação", "Séries", "Documentários"];
-
+  const categories = ["Ficção Científica", "Aventura", "Suspense", "Comédia", "Tecnologia", "Natureza"];
   return (
     <div>
       <Header />

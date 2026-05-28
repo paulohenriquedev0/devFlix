@@ -24,19 +24,27 @@ function Login() {
         <h1>DEVFLIX</h1>
         <h2>Entrar</h2>
 
-        <input
-          type="email"
-          placeholder="Digite seu email"
-          value={email}
-          onChange={(event) => setEmail(event.target.value)}
-        />
+        {/* EMAIL */}
+        <div className="input-group">
+          <input
+            type="email"
+            value={email}
+            onChange={(event) => setEmail(event.target.value)}
+            required
+          />
+          <label>Digite seu email</label>
+        </div>
 
-        <input
-          type="password"
-          placeholder="Digite sua senha"
-          value={password}
-          onChange={(event) => setPassword(event.target.value)}
-        />
+        {/* SENHA */}
+        <div className="input-group">
+          <input
+            type="password"
+            value={password}
+            onChange={(event) => setPassword(event.target.value)}
+            required
+          />
+          <label>Digite sua senha</label>
+        </div>
 
         <button type="submit">Entrar</button>
 
