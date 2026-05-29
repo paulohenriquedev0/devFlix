@@ -116,8 +116,8 @@ button {
 }
 
 /* 🔥 CORREÇÃO PRINCIPAL DO FLOAT */
-.input-group input:focus ~ label,
-.input-group input:valid ~ label {
+.input-group input:focus~label,
+.input-group input:valid~label {
   top: -8px;
   left: 12px;
   font-size: 12px;
@@ -432,4 +432,35 @@ button {
     width: 90%;
     padding: 30px;
   }
+}
+
+.error-message {
+  color: #ff6b6b;
+  font-size: 14px;
+}
+
+.loading-page {
+  min-height: 100vh;
+  padding-top: 120px;
+  display: flex;
+  justify-content: center;
+  color: white;
+}
+
+.header h1 {
+  cursor: pointer;
+}
+
+.logout-button {
+  margin-left: auto;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  background-color: #333;
+  color: white;
+  font-weight: bold;
+}
+
+.logout-button:hover {
+  background-color: #444;
 }

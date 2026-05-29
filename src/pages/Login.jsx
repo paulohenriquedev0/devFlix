@@ -1,20 +1,38 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { api } from "../services/api";
 import "../index.css";
 
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+
   const navigate = useNavigate();
 
-  function handleLogin(event) {
+  async function handleLogin(event) {
     event.preventDefault();
 
-    if (email === "user@devflix.com" && password === "123456") {
+    setError("");
+    setLoading(true);
+
+    try {
+      const response = await api.post("/login", {
+        email,
+        password
+      });
+
+      const user = response.data.user;
+
+      localStorage.setItem("devflix:user", JSON.stringify(user));
+
       navigate("/home");
-    } else {
-      alert("Email ou senha inválidos");
+    } catch (error) {
+      setError("Email ou senha inválidos.");
+    } finally {
+      setLoading(false);
     }
   }
 
@@ -24,32 +42,30 @@ function Login() {
         <h1>DEVFLIX</h1>
         <h2>Entrar</h2>
 
-        {/* EMAIL */}
-        <div className="input-group">
-          <input
-            type="email"
-            value={email}
-            onChange={(event) => setEmail(event.target.value)}
-            required
-          />
-          <label>Digite seu email</label>
-        </div>
+        <input
+          type="email"
+          placeholder="Digite seu email"
+          value={email}
+          onChange={(event) => setEmail(event.target.value)}
+        />
 
-        {/* SENHA */}
-        <div className="input-group">
-          <input
-            type="password"
-            value={password}
-            onChange={(event) => setPassword(event.target.value)}
-            required
-          />
-          <label>Digite sua senha</label>
-        </div>
+        <input
+          type="password"
+          placeholder="Digite sua senha"
+          value={password}
+          onChange={(event) => setPassword(event.target.value)}
+        />
 
-        <button type="submit">Entrar</button>
+        {error && <p className="error-message">{error}</p>}
+
+        <button type="submit" disabled={loading}>
+          {loading ? "Entrando..." : "Entrar"}
+        </button>
 
         <p className="login-help">
           Use: user@devflix.com / 123456
+          <br />
+          Ou: admin@devflix.com / 123456
         </p>
       </form>
     </div>

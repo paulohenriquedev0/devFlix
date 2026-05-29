@@ -1,12 +1,47 @@
-import { movies } from "../data/movies";
+import { useEffect, useState } from "react";
+import { api } from "../services/api";
+
 import Header from "../components/Header";
 import FeaturedMovie from "../components/FeaturedMovie";
 import MovieRow from "../components/MovieRow";
 
 function Home() {
-  const featuredMovie = movies.find((movie) => movie.featured === true);
+  const [featuredMovie, setFeaturedMovie] = useState(null);
+  const [movies, setMovies] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-  const categories = ["Ficção Científica", "Aventura", "Suspense", "Comédia", "Tecnologia", "Natureza"];
+  async function loadMovies() {
+    try {
+      const featuredResponse = await api.get("/movies/featured");
+      const moviesResponse = await api.get("/movies");
+
+      setFeaturedMovie(featuredResponse.data);
+      setMovies(moviesResponse.data);
+    } catch (error) {
+      console.log("Erro ao buscar filmes:", error);
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  useEffect(() => {
+    loadMovies();
+  }, []);
+
+  if (loading) {
+    return (
+      <div>
+        <Header />
+        <div className="loading-page">
+          <h2>Carregando filmes...</h2>
+        </div>
+      </div>
+    );
+  }
+
+  const categoryNames = movies.map((movie) => movie.category.name);
+  const uniqueCategories = [...new Set(categoryNames)];
+
   return (
     <div>
       <Header />
@@ -14,15 +49,15 @@ function Home() {
       <FeaturedMovie movie={featuredMovie} />
 
       <main className="content">
-        {categories.map((category) => {
+        {uniqueCategories.map((categoryName) => {
           const filteredMovies = movies.filter(
-            (movie) => movie.category === category
+            (movie) => movie.category.name === categoryName
           );
 
           return (
             <MovieRow
-              key={category}
-              title={category}
+              key={categoryName}
+              title={categoryName}
               movies={filteredMovies}
             />
           );

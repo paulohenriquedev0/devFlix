@@ -63,6 +63,10 @@ app.get("/categories", async (request, response) => {
     return response.json(categories);
 });
 
+/* ========================= */
+/* LISTAR TODOS OS FILMES */
+/* ========================= */
+
 app.get("/movies", async (request, response) => {
     const movies = await prisma.movie.findMany({
         include: {
@@ -75,6 +79,14 @@ app.get("/movies", async (request, response) => {
 
     return response.json(movies);
 });
+
+/* ========================= */
+/* FILME EM DESTAQUE */
+/* IMPORTANTE:
+   ESTA ROTA DEVE VIR
+   ANTES DE /movies/:id
+*/
+/* ========================= */
 
 app.get("/movies/featured", async (request, response) => {
     const featuredMovie = await prisma.movie.findFirst({
@@ -95,9 +107,15 @@ app.get("/movies/featured", async (request, response) => {
     return response.json(featuredMovie);
 });
 
+/* ========================= */
+/* BUSCAR FILME POR ID */
+/* ========================= */
+
 app.get("/movies/:id", async (request, response) => {
+    // Pega o id que veio na URL
     const { id } = request.params;
 
+    // Busca um filme pelo id
     const movie = await prisma.movie.findUnique({
         where: {
             id: Number(id)
@@ -107,14 +125,20 @@ app.get("/movies/:id", async (request, response) => {
         }
     });
 
+    // Se não encontrar, retorna erro
     if (!movie) {
         return response.status(404).json({
             message: "Filme não encontrado."
         });
     }
 
+    // Retorna o filme encontrado
     return response.json(movie);
 });
+
+/* ========================= */
+/* DEFINIR FILME EM DESTAQUE */
+/* ========================= */
 
 app.put("/movies/:id/featured", async (request, response) => {
     const { id } = request.params;

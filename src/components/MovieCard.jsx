@@ -9,7 +9,9 @@ function MovieCard({ movie }) {
       onClick={() => navigate(`/movie/${movie.id}`)}
     >
       <img src={movie.coverImage} alt={movie.title} />
+
       <h3>{movie.title}</h3>
+
       <span>{movie.type}</span>
     </div>
   );

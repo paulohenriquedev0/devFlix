@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 function FeaturedMovie({ movie }) {
   const navigate = useNavigate();
 
+  // Se ainda não tiver filme, não mostra nada
   if (!movie) {
     return null;
   }
@@ -16,10 +17,12 @@ function FeaturedMovie({ movie }) {
     >
       <div className="featured-content">
         <h2>{movie.title}</h2>
+
         <p>{movie.description}</p>
 
         <div className="featured-buttons">
           <button>Assistir</button>
+
           <button onClick={() => navigate(`/movie/${movie.id}`)}>
             Ver detalhes
           </button>
