@@ -71,6 +71,13 @@ async function main() {
         }
     });
 
+    const anime = await prisma.category.create({
+        data: {
+            name: "Anime",
+            type: "anime"
+        }
+    });
+
     // Filmes e séries
 
     await prisma.movie.create({
@@ -150,6 +157,22 @@ async function main() {
             videoUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
             featured: false,
             categoryId: tecnologia.id
+        }
+    });
+
+    await prisma.movie.create({
+        data: {
+            title: "Dragon Ball Z",
+            description:
+                "Goku e seus amigos defendem a Terra contra inimigos poderosos enquanto buscam se tornar cada vez mais fortes.",
+            type: "anime",
+            coverImage:
+                "https://images.unsplash.com/photo-1578632767115-351597cf2477",
+            bannerImage:
+                "https://images.unsplash.com/photo-1578632767115-351597cf2477",
+            videoUrl: "https://www.youtube.com/watch?v=1GJxoiu3n4M",
+            featured: false,
+            categoryId: anime.id
         }
     });
 
